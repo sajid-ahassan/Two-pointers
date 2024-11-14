@@ -24,7 +24,7 @@ int poss(vector<int> &arr, int sum, int s)
     while (s <= e)
     {
         int mid = s + (e - s) / 2;
-        if (sum + arr[mid] == 0)
+        if (sum + arr[mid] == 0) // or if you want to find a cartian number just change o to the wanted number
             return mid;
         else if (sum + arr[mid] > 0)
             e = mid - 1;
