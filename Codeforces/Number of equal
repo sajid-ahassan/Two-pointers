@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) (x).begin() + 1, (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+#define int long long
+// #define endl '\n'
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+const int mod = 1e6 + 7;
+
+void solve()
+{
+}
+signed main()
+{
+    optimize();
+    int n, m;
+    cin >> n >> m;
+    int l1 = 0, l2 = 0;
+    vector<int> arr1(n), arr2(m), arr;
+    for (auto &it : arr1)
+        cin >> it;
+    for (auto &it : arr2)
+        cin >> it;
+    int i = 0, ct1 = 1, ct2 = 1, c1 = 0, c2 = 0, ct = 0;
+    int j = 0;
+    while (i < n && j < m)
+    {
+        c1 = arr1[i];
+        c2 = arr2[j];
+        if (c1 == c2)
+        {
+            ct1 = 1;
+            ct2 = 1;
+            while (i < n - 1 && arr1[i] == arr1[i + 1])
+            {
+                ct1++;
+                i++;
+            }
+            while (j < m - 1 && arr2[j] == arr2[j + 1])
+            {
+                ct2++;
+                j++;
+            }
+            ct += ct1 * ct2;
+            i++;
+            j++;
+        }
+        else if (c1 > c2)
+            j++;
+        else
+            i++;
+    }
+    cout << ct << endl;
+    return 0;
+}
