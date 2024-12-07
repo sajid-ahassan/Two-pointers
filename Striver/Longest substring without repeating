@@ -29,15 +29,15 @@ signed main()
     cin >> n >> str;
     int s = 0;
     int len = 0, ct = 0;
-    map<char, int> mp;
+    vector<int> mp(256, -1);
     for (int i = 0; i < n; i++)
     {
-        char ch = str[i];
-        mp[ch]++;
-        while (mp[ch] > 1)
+        if (mp[str[i]] == -1)
+            mp[str[i]] = i;
+        else if (mp[str[i]] != -1)
         {
-            mp[str[s]]--;
-            s++;
+            s = mp[str[i]] + 1;
+            mp[str[i]] = i;
         }
         len = max(len, i - s + 1);
     }
