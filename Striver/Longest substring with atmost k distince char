@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) (x).begin() + 1, (x).end()
+#define allr(x) (x).rbegin(), (x).rend()
+#define gsize(x) (int)((x).size())
+#define int long long
+// #define endl '\n'
+bool comparePairs(const pair<int, int> &a, const pair<int, int> &b)
+{
+    if (a.first != b.first)
+        return a.first > b.first;
+    return a.second < b.second;
+}
+#define optimize()                \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+const int mod = 1e10 + 7;
+
+void solve()
+{
+}
+signed main()
+{
+    optimize();
+    int n, m;
+    string str;
+    cin >> str >> m;
+    int s = 0, len = 0, ct = 0, z = 0;
+    map<char, int> st;
+    for (int i = 0; i < gsize(str); i++)
+    {
+        st[str[i]]++;
+        if (gsize(st) > m)
+        {
+            st[str[s]]--;
+            if (st[str[s]] == 0)
+                st.erase(str[s]);
+            s++;
+        }
+        if (gsize(st) <= m)
+            len = max(len, i - s + 1);
+    }
+    cout << len << endl;
+    return 0;
+}
